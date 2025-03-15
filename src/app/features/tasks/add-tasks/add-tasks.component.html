@@ -1,0 +1,32 @@
+<h2 class="mb-4">Agregar tarea</h2>
+<form [formGroup]="form" class="p-3">
+    <label for="tittle" class="form-label fw-semibold">Título</label>
+    <input type="text" formControlName="tittle" class="form-control mb-3"
+      [class.is-invalid]="form.get('tittle')?.invalid && form.get('tittle')?.touched">
+    <div *ngIf="form.get('tittle')?.invalid && form.get('tittle')?.touched" class="invalid-feedback">
+        El título es obligatorio.
+    </div>
+
+    <label for="description" class="form-label fw-semibold">Descripción</label>
+    <textarea class="form-control mb-3"
+      formControlName="description"
+      [class.is-invalid]="form.get('description')?.invalid && form.get('description')?.touched"></textarea>
+    <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched" class="invalid-feedback">
+        La descripción es obligatoria.
+    </div>
+
+    <label for="status" class="form-label fw-semibold">Estado</label>
+    <select class="form-select" formControlName="status"
+      [class.is-invalid]="form.get('status')?.invalid && form.get('status')?.touched">
+        <option value="0">Pendiente</option>
+        <option value="1">Completado</option>
+    </select>
+    <div *ngIf="form.get('status')?.invalid && form.get('status')?.touched" class="invalid-feedback">
+        Debe seleccionar un estado.
+    </div>
+</form>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled]="form.invalid">Guardar</button>
+</div>
