@@ -1,9 +1,5 @@
 
-
 export const environment = {
   production: true,
-
-  apiUrl: 'http://localhost:5135/',
-
-
+  apiUrl: 'https://tu-app-backend.azurewebsites.net/'
 };
